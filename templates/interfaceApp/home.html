@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="position-relative">
+    <div
+      id="carouselExampleInterval"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="3000">
+          <img
+            style="
+              height: 85vh;
+              filter: brightness(0.3);
+              background-size: contain;
+            "
+            src="{% static 'shopApp/clothes/images.jpg'%}"
+            class="d-block w-100"
+            alt="image"
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+          <img
+            style="
+              height: 85vh;
+              filter: brightness(0.3);
+              background-size: contain;
+            "
+            src="{% static 'shopApp/clothes/logo.png'%}"
+            class="d-block w-100"
+            alt="image"
+          />
+        </div>
+      </div>
+      <div class="container">
+        <div class="position-absolute text-white" style="top: 26%">
+          <div style="width: 50%">
+            <h1 style="font-size: 3em">The Best Thanka Shop In Town.</h1>
+            <p class="py-3 d-lg-block d-none" style="font-size: 1.3em">
+                The best thanka shop, where you can find best thanka products. Genuine handmade handcrafts, neplaese traditional tools and many more.
+            </p>
+            <div class="mt-3 d-flex gap-2">
+              <a href="/contact" class="btn btn-outline-light">Contact US</a>
+              <a href="tel:+015435434" class="btn btn-outline-light"
+                >Call us for Enquiry
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- courses -->
+  <div class="container py-5">
+    <h1 class="text-center py-4">Offered Items</h1>
+    <div class="py-3">
+      <div class="row">
+        <div class="col-3 p-0 px-2">
+          <div class="rounded-3 border shadow-sm">
+            <img
+              src="{% static 'shopApp/clothes/logo.png'%}"
+              alt="logo"
+              style="height: 25vh; width: 100%"
+              class="rounded-top-3 mb-2"
+            />
+            <div class="p-3">
+              <h5 class="mb-2">Pure Thanka Pictures</h5>
+              <p style="text-align: justify">
+                We provide pure thanka pictures. 100% handcrafts , and genuine materials used without compromising its quality.
+              </p>
+              <a href="/clothes" class="btn btn-sm btn-primary">Start Shopping</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 p-0 px-2">
+          <div class="rounded-3 border shadow-sm">
+            <img
+              src="{% static 'shopApp/flags/prayer-flag.jpg' %}"
+              alt="logo"
+              style="height: 25vh; width: 100%"
+              class="rounded-top-3 mb-2"
+            />
+            <div class="p-3">
+              <h5 class="mb-2">Flags</h5>
+              <p style="text-align: justify">
+                We provide genuine flags which included nepal as well as various religious buddhist flags. We don't compromise the quality.
+              </p>
+              <a href="/flags" class="btn btn-sm btn-primary">Start Shopping</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 p-0 px-2">
+          <div class="rounded-3 border shadow-sm">
+            <img
+              src="{% static 'shopApp/utensils/karuwa.png'%}"
+              alt="logo"
+              style="height: 25vh; width: 100%"
+              class="rounded-top-3 mb-2"
+            />
+            <div class="p-3">
+              <h5 class="mb-2">Old Utensils</h5>
+              <p style="text-align: justify">
+                We provide old utensils. We don't compromise the quality. We help you find various old nepalese utensils.
+              </p>
+              <a href="/utensils" class="btn btn-sm btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why -->
+
+  <div class="container py-3">
+    <h1 class="text-center py-4">What Make Us Different ?</h1>
+
+    <div class="col-12">
+      <!-- content -->
+      <div class="row mb-3 rounded-3 border shadow-sm">
+        <div class="col-lg-4 p-0">
+          <img
+            class="rounded-start-3"
+            src="{% static 'shopApp/flags/prayer-flag.jpg' %}"
+            style="width: 100%; height: 30vh"
+            alt="image"
+          />
+        </div>
+        <div class="col d-flex align-items-center">
+          <div>
+            <h4 class="mb-2">Weekly Offers!!</h4>
+            We provide you weekly offers on weekdays. Upto 50% off!!!
+            We provide you genuine products of high quality with genuine price.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

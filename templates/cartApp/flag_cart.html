@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Flag_Cart{% endblock %}
+{% block body %}
+<style>
+    .cart-container {
+        padding: 20px;
+    }
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+    }
+    .cart-item img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+    .cart-item-details {
+        flex: 1;
+        margin-left: 20px;
+    }
+    .cart-item-controls {
+        display: flex;
+        align-items: center;
+    }
+    .quantity {
+        width: 50px;
+        text-align: center;
+    }
+    .total-price {
+        text-align: right;
+        margin-top: 20px;
+    }
+    .pay-now-button {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+</style>
+<div class="container cart-container">
+    <h2>Your Cart</h2>
+    <div id="cart-items">
+        <!-- Cart items will be dynamically added here -->
+    </div>
+    <div class="total-price">
+        <h3>Total: <span id="total-price">Rs. 0</span></h3>
+    </div>
+    <div class="pay-now-button">
+        <a href="/payment" class="btn btn-success">Pay Now</a>
+    </div>
+</div>
+
+<script>
+    // Sample data for cart items
+    const cartItems = [
+        {
+            id: 1,
+            name: "Bagmati 8\" Flower Pot",
+            price: 536,
+            image: "{% static 'shopApp/flags/green-tara.jpg' %}",
+            quantity: 0
+        },
+        // Additional items can be added here
+        {
+            id: 2,
+            name: "Bagmati 8\" Flower Pot",
+            price: 536,
+            image: "{% static 'shopApp/flags/prayer-flag.jpg' %}",
+            quantity: 0
+        },
+        {
+            id: 3,
+            name: "Bagmati 8\" Flower Pot",
+            price: 536,
+            image: "{% static 'shopApp/flags/victory-banner.jpg' %}",
+            quantity: 0
+        },
+    ];
+
+    function renderCartItems() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        cartItemsContainer.innerHTML = '';  // Clear the container
+        let totalPrice = 0;
+
+        cartItems.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+
+            cartItem.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <div class="cart-item-details">
+                    <h5>${item.name}</h5>
+                    <p>Price: Rs. ${item.price}</p>
+                </div>
+                <div class="cart-item-controls">
+                    <button onclick="updateQuantity(${item.id}, -1)">-</button>
+                    <input type="text" class="quantity" value="${item.quantity}" readonly>
+                    <button onclick="updateQuantity(${item.id}, 1)">+</button>
+                </div>
+            `;
+
+            cartItemsContainer.appendChild(cartItem);
+            totalPrice += item.price * item.quantity;
+        });
+
+        document.getElementById('total-price').innerText = `Rs. ${totalPrice}`;
+    }
+
+    function updateQuantity(itemId, change) {
+        const item = cartItems.find(item => item.id === itemId);
+        if (item) {
+            item.quantity += change;
+            if (item.quantity < 0) {
+                item.quantity = 0;
+            }
+            renderCartItems();
+        }
+    }
+
+    // Initial render
+    renderCartItems();
+</script>
+{% endblock %}
